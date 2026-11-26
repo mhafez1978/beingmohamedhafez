@@ -137,7 +137,7 @@ export default function Concertina({ photos }: { photos: readonly Photo[] }) {
       </div>
       <ol className="cc-cards">
         {photos.map((p, i) => (
-          <li className="cc-card paper" key={p.src} data-card>
+          <li className="cc-card paper" key={p.src} data-card style={{ zIndex: photos.length - i }}>
             <Image src={asset(p.src)} alt={p.alt} width={800} height={1000} loading="lazy" draggable={false} />
             <p className="cc-cap">
               <span className="num">{String(i + 1).padStart(2, "0")}</span>

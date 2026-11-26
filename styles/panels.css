@@ -199,7 +199,8 @@
 }
 
 .work-wide .pi img {
-  object-position: 0 0;
+  object-fit: contain;
+  object-position: left top;
 }
 
 /* Three screens standing on the bottom edge, cut by the trim. */
@@ -239,7 +240,8 @@
 }
 
 .work-bleed .pi img {
-  object-position: 0 0;
+  object-fit: contain;
+  object-position: left top;
 }
 
 .work-bleed .pt {
@@ -293,7 +295,8 @@
 }
 
 .work-dark .pi img {
-  object-position: 100% 0;
+  object-fit: contain;
+  object-position: left top;
 }
 
 /* ───────── Away from the screen ───────── */
