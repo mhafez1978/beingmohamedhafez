@@ -1,31 +1,38 @@
-"use client";
-
-import { navItems } from "@/data";
-
+import site from "@/site.config";
 import Hero from "@/components/Hero";
-import Grid from "@/components/Grid";
-import Footer from "@/components/Footer";
-import Clients from "@/components/Clients";
-import Approach from "@/components/Approach";
-import Experience from "@/components/Experience";
-import RecentProjects from "@/components/RecentProjects";
-import { FloatingNav } from "@/components/ui/FloatingNavbar";
+import Strip from "@/components/Strip";
+import Finale from "@/components/Finale";
+import FinaleSheet from "@/components/FinaleSheet";
+import GateSheet from "@/components/GateSheet";
+import { AwayPanel, IndexPanel, WorkPanel } from "@/components/Panels";
 
-const Home = () => {
+export default function Page() {
+  const n = site.work.length;
   return (
-    <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
-      <div className="max-w-7xl w-full">
-        <FloatingNav navItems={navItems} />
-        <Hero />
-        <Grid />
-        <RecentProjects />
-        <Clients />
-        <Experience />
-        <Approach />
-        <Footer />
-      </div>
+    <main id="top">
+      <Hero>
+        <GateSheet />
+      </Hero>
+      <Strip>
+        {site.work.map((item, i) => (
+          <WorkPanel key={item.slug} item={item} n={i + 2} />
+        ))}
+        <AwayPanel n={n + 2} />
+        <IndexPanel n={n + 3} />
+      </Strip>
+      <Finale>
+        <FinaleSheet />
+      </Finale>
+      <footer className="colophon">
+        <p>
+          {site.colophon.map((line) => (
+            <span key={line}>{line}</span>
+          ))}
+        </p>
+        <p className="colophon-small">
+          © {new Date().getFullYear()} {site.person.name}
+        </p>
+      </footer>
     </main>
   );
-};
-
-export default Home;
+}
